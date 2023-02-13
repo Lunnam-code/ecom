@@ -1,0 +1,8 @@
+
+{% autoescape off %}<!--autoescape is the easiest way of rendering html when send email-->
+Hi {{user.first_name}},
+Please click below link to confirm your registration.
+http://{{domain}}{% url 'activate' uidb64=uid token=token %}
+
+if you think it's not you, ignore this email.
+{% endautoescape %}
