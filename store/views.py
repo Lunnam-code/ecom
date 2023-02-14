@@ -42,11 +42,13 @@ def product_detail(request, category_slug,product_slug):
         in_cart = CartItem.objects.filter(cart__cart_id=_cart_id(request), product=single_product).exists()
         # return HttpResponse(in_cart) #check if it returns true
         # exit()
+        variations = single_product.variation_set.all()
     except Exception as e:
         raise e
     context = {
         'single_product': single_product,
         'in_cart'       : in_cart,
+        'variations'    :variations
     }
     return render(request,'store/product_detail.html',context)
 
